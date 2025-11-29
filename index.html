@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KNT BUZAU | Kountis Total Auto | Acasă</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+header {
+  background-color: #FF5C00;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255, 92, 0, 0.4);
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(1.2em, 2vw, 1.8em);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: clamp(0.9em, 2vw, 1em);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after { width: 100%; }
+nav a:hover { transform: scale(1.05); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('KNT-3.jpeg')
+              center/cover no-repeat;
+  text-align: center;
+  padding: clamp(120px, 15vw, 200px) 5%;
+}
+
+.hero h2 {
+  font-size: clamp(1.8em, 5vw, 2.8em);
+  color: #FF5C00;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: clamp(1em, 2.5vw, 1.3em);
+  max-width: 750px;
+  margin: 0 auto 25px;
+}
+
+/* 🔥 Căsuță telefon care "sare în ochi" */
+.call-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.call-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: #FF5C00;
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(1.1em, 3vw, 1.4em);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.9);
+  animation: blinkCall 0.9s infinite alternate;
+  border: 2px solid #fff;
+}
+
+.call-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(255, 92, 0, 1);
+}
+
+/* Animație de clipire/puls */
+@keyframes blinkCall {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 92, 0, 0.8);
+    background-color: #FF5C00;
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
+    background-color: #ff7b2a;
+  }
+  100% {
+    transform: scale(1.03);
+    box-shadow: 0 0 22px rgba(255, 92, 0, 1);
+    background-color: #FF5C00;
+  }
+}
+
+/* INFO BOXES */
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  background-color: #000;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.info-box {
+  background-color: #111;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,92,0,0.4);
+  width: clamp(250px, 25%, 320px);
+  transition: 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(255,92,0,1);
+}
+
+.info-box h3 { color: #FF5C00; margin-bottom: 10px; }
+.info-box p { color: #ddd; }
+
+/* Floating buttons */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+.circle-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF5C00;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.circle-btn img { width: 65%; height: auto; }
+
+.circle-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 35px rgba(255,92,0,1);
+}
+
+/* FOOTER */
+footer {
+  background-color: #000;
+  padding: 20px 5%;
+  text-align: center;
+  color: #aaa;
+}
+footer a { color: #FF5C00; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>KNT BUZAU | Kountis Total Auto</h1>
+  <nav>
+    <a href="index.html">Acasă</a>
+    <a href="tractari.html">Tractări Auto</a>
+    <a href="transport.html">Transport Marfă</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>KNT BUZAU | Kountis Total Auto</h2>
+  <p>Tractări Auto & Transport Marfă<br>România • Bulgaria • Grecia • NON-STOP</p>
+  <div class="call-wrapper">
+    <a href="tel:+40722921675" class="call-btn">☎️ 0722 921 675</a>
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="info-box">
+    <h3>Tractări Auto</h3>
+    <p>Intervenție rapidă în orice situație, 24/7.</p>
+  </div>
+  <div class="info-box">
+    <h3>Transport Marfă</h3>
+    <p>Soluții pentru orice tip de marfă.</p>
+  </div>
+  <div class="info-box">
+    <h3>Disponibil Non-Stop</h3>
+    <p>Suntem gata de intervenție oricând.</p>
+  </div>
+</section>
+
+<div class="floating-btn">
+  <div class="circle-btn" onclick="window.open('https://www.facebook.com/share/17opqx3Cfi/', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
+  </div>
+  <div class="circle-btn" onclick="window.open('https://wa.me/40722921675', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  </div>
+  <div class="circle-btn" onclick="window.location.href='tel:0722921675'">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png">
+  </div>
+</div>
+
+<footer>
+  <p>📍 Buzău, România • ☎️ <a href="tel:0722921675">0722 921 675</a></p>
+  <p><a href="https://www.facebook.com/share/17opqx3Cfi/" target="_blank">Facebook</a></p>
+  <p>© 2025 Kountis Total Auto. Toate drepturile rezervate.</p>
+</footer>
+
+<!-- 🔊 Script care activează sunetul după prima interacțiune -->
+<script>
+  const audio = document.getElementById("bg-audio");
+
+  function enableAudio() {
+    if (!audio) return;
+    if (!audio.muted) return;
+
+    audio.muted = false;
+    audio.volume = 0.25; // volum 25%, să nu fie deranjant
+    audio.play().catch(() => {
+      // unele browsere pot bloca redarea automată
+    });
+  }
+
+  // Prima interacțiune oriunde în pagină
+  document.addEventListener("click", enableAudio, { once: true });
+
+  // Sigur pornim și când apasă pe numărul de telefon din hero (dacă există)
+  const phoneBtn = document.querySelector(".call-btn");
+  if (phoneBtn) {
+    phoneBtn.addEventListener("click", enableAudio);
+  }
+</script>
+<!-- 🔊 /SCRIPT -->
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | KNT BUZAU | Kountis Total Auto </title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+header {
+  background-color: #FF5C00;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255, 92, 0, 0.4);
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(1.2em, 2vw, 1.8em);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: clamp(0.9em, 2vw, 1em);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(255,255,255,0.8);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after { width: 100%; }
+
+nav a:hover {
+  color: #ffe6cc;
+  transform: scale(1.05);
+}
+
+/* HERO CONTACT */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url('KNT-2.jpeg') center/cover no-repeat;
+  text-align: center;
+  padding: clamp(120px, 15vw, 180px) 5%;
+}
+
+.hero h2 {
+  font-size: clamp(1.8em, 5vw, 2.5em);
+  color: #FF5C00;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(255,92,0,1);
+}
+
+.hero p {
+  font-size: clamp(1em, 2.5vw, 1.2em);
+  max-width: 750px;
+  margin: 0 auto;
+  color: #f2f2f2;
+}
+
+/* GRID CONTACT */
+.contact-wrapper {
+  background-color: #000;
+  padding: 50px 8%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-box {
+  background-color: #111;
+  border-radius: 12px;
+  padding: 25px 25px 30px;
+  box-shadow: 0 0 20px rgba(255,92,0,0.3);
+}
+
+/* Info contact */
+.contact-box h3 {
+  color: #FF5C00;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.contact-item {
+  margin-bottom: 12px;
+  font-size: 1em;
+}
+
+.contact-item span.label {
+  font-weight: 600;
+  color: #FF5C00;
+}
+
+/* Butoane mari de acțiune */
+.contact-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-btn {
+  background-color: #FF5C00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-btn:hover {
+  background-color: #ff7720;
+  box-shadow: 0 0 18px rgba(255,92,0,0.9);
+  transform: translateY(-2px);
+}
+
+/* Formular */
+.contact-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-box label {
+  font-size: 0.95em;
+  margin-bottom: 3px;
+}
+
+.contact-box input,
+.contact-box textarea {
+  background-color: #000;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95em;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+  border-color: #FF5C00;
+  box-shadow: 0 0 8px rgba(255,92,0,0.6);
+}
+
+.contact-box textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Hartă */
+.map-container {
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(0,0,0,0.7);
+}
+
+.map-container iframe {
+  border: 0;
+  width: 100%;
+  height: 260px;
+}
+
+/* Butoane flotante */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+.circle-btn {
+  width: clamp(50px, 6vw, 60px);
+  height: clamp(50px, 6vw, 60px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF5C00;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 25px rgba(255,92,0,0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: glow 3s ease-in-out infinite alternate;
+  cursor: pointer;
+}
+
+.circle-btn img {
+  width: 65%;
+  height: auto;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 15px rgba(255,92,0,0.4), 0 0 30px rgba(255,92,0,0.2); }
+  100% { box-shadow: 0 0 25px rgba(255,92,0,0.8), 0 0 50px rgba(255,92,0,0.5); }
+}
+
+.circle-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 35px rgba(255,92,0,1);
+}
+
+footer {
+  background-color: #000;
+  padding: 20px 5%;
+  text-align: center;
+  color: #aaa;
+  font-size: clamp(0.8em, 2vw, 1em);
+}
+
+footer a {
+  color: #FF5C00;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>KNT BUZAU | Kountis Total Auto</h1>
+  <nav>
+    <a href="index.html">Acasă</a>
+    <a href="tractari.html">Tractări Auto</a>
+    <a href="transport.html">Transport Marfă</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Contact Kountis Total Auto</h2>
+  <p>Suntem disponibili NON-STOP pentru tractări auto și transport marfă în România, Bulgaria și Grecia. Alege metoda de contact care ți se potrivește.</p>
+ <div class="call-wrapper">
+    <a href="tel:+40722921675" class="call-btn">☎️ 0722 921 675</a>
+  </div>
+</section>
+  
+  <style>
+/* 🔥 Căsuță telefon care "sare în ochi" */
+.call-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.call-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: #FF5C00;
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(1.1em, 3vw, 1.4em);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.9);
+  animation: blinkCall 0.9s infinite alternate;
+  border: 2px solid #fff;
+}
+
+.call-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(255, 92, 0, 1);
+}
+
+@keyframes blinkCall {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 92, 0, 0.8);
+    background-color: #FF5C00;
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
+    background-color: #ff7b2a;
+  }
+  100% {
+    transform: scale(1.03);
+    box-shadow: 0 0 22px rgba(255, 92, 0, 1);
+    background-color: #FF5C00;
+  }
+}
+</style>
+
+
+<section class="contact-wrapper">
+  <!-- Coloana stânga: date contact + acțiuni -->
+  <div class="contact-box">
+    <h3>Date de contact</h3>
+
+    <div class="contact-item">
+      <span class="label">Firmă:</span> Kountis Total Auto
+    </div>
+    <div class="contact-item">
+      <span class="label">Locație:</span> Buzău, România
+    </div>
+    <div class="contact-item">
+      <span class="label">Telefon:</span>
+      <a href="tel:0722921675" style="color:#FF5C00; text-decoration:none;">0722 921 675</a>
+    </div>
+    <div class="contact-item">
+      <span class="label">Facebook:</span>
+      <a href="https://www.facebook.com/share/17opqx3Cfi/" target="_blank" style="color:#FF5C00; text-decoration:none;">
+        tractariplatformabuzau
+      </a>
+    </div>
+    <div class="contact-item">
+      <span class="label">Program:</span> NON-STOP (24/7)
+    </div>
+
+    <div class="contact-actions">
+      <a class="contact-btn" href="tel:0722921675">📞 Sună acum</a>
+      <a class="contact-btn" href="https://wa.me/40722921675" target="_blank">📱 WhatsApp</a>
+      <a class="contact-btn" href="https://www.facebook.com/share/17opqx3Cfi/" target="_blank">📘 Facebook</a>
+    </div>
+  </div>
+
+  <!-- Coloana dreapta: formular + hartă -->
+ <div class="contact-box">
+  <h3>Trimite-ne un mesaj</h3>
+
+  <form id="whatsappForm">
+    <div>
+      <label for="nume">Nume complet</label>
+      <input type="text" id="nume" name="nume" placeholder="Ex: Ion Popescu" required>
+    </div>
+
+    <div>
+      <label for="telefon">Telefon</label>
+      <input type="tel" id="telefon" name="telefon" placeholder="Ex: 07xx xxx xxx" required>
+    </div>
+
+    <div>
+      <label for="detalii">Detalii solicitare</label>
+      <textarea id="detalii" name="detalii" placeholder="Locul preluării, destinația, tipul mașinii / mărfii..." required></textarea>
+    </div>
+
+    <button type="submit" class="contact-btn">📤 Trimite mesajul</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("whatsappForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const phoneNumber = "40722921675"; // <<–– pune aici numărul tău DE WHATSAPP, fără +
+    const nume = document.getElementById("nume").value;
+    const telefon = document.getElementById("telefon").value;
+    const detalii = document.getElementById("detalii").value;
+
+    const mesaj = `Bună! Sunt ${nume}.
+Telefon: ${telefon}
+Detalii solicitare: ${detalii}`;
+
+    const url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(mesaj);
+
+    window.open(url, "_blank");
+  });
+</script>
+
+
+    <div class="map-container">
+      <iframe
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d703.3203511588284!2d26.81960043548483!3d45.16115116584403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b15f00746b49b1%3A0x12d18742264a9f31!2sTractari%20auto%20KNT!5e0!3m2!1sro!2sro!4v1764413355175!5m2!1sro!2sro">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<div class="floating-btn">
+  <div class="circle-btn" onclick="window.open('https://www.facebook.com/share/17opqx3Cfi/', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png" alt="Facebook">
+  </div>
+  <div class="circle-btn" onclick="window.open('https://wa.me/40722921675', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </div>
+  <div class="circle-btn" onclick="window.location.href='tel:0722921675'">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Telefon">
+  </div>
+</div>
+
+<footer>
+  <p>📍 Buzău, România • ☎️ <a href="tel:0722921675">0722 921 675</a> • 
+    <a href="https://www.facebook.com/share/17opqx3Cfi/" target="_blank">Facebook</a>
+  </p>
+  <p>© 2025 Kountis Total Auto. Toate drepturile rezervate.</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
