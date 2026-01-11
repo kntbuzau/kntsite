@@ -1,4 +1,3 @@
-<script>
 (function () {
     const MAX_VISITS = 2;
     const BAN_DAYS = 10;
@@ -50,4 +49,3 @@
         throw new Error("TEMP BANNED");
     }
 })();
-</script>
