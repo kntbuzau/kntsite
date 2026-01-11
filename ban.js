@@ -1,45 +1,44 @@
-(function() {
-    const MAX_VISITS = 2;
-    const BAN_DAYS = 10;
-    const now = Date.now();
+(function () {
+  // 🔑 cheia ta secretă (schimb-o cu ceva ce știi doar tu)
+  const MASTER_KEY = "admin_knt_2026";
 
-    const banUntil = localStorage.getItem("ban_until");
-    if (banUntil && now < parseInt(banUntil)) {
-        // BAN activ → curăță tot conținutul și afișează mesajul
-        document.body.innerHTML = '';
-        document.head.innerHTML = '';
-        document.documentElement.style.margin = '0';
-        document.documentElement.style.height = '100vh';
-        document.documentElement.style.display = 'flex';
-        document.documentElement.style.justifyContent = 'center';
-        document.documentElement.style.alignItems = 'center';
-        document.documentElement.style.background = '#0f0f0f';
-        document.documentElement.style.color = 'red';
-        document.documentElement.style.fontFamily = 'Arial, sans-serif';
-        document.documentElement.innerHTML = '<h1>You are banned</h1>';
-        throw new Error("BANNED");
-    }
+  // dacă intri cu cheia → NU ești contorizat și NU poți fi banat
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("admin") === MASTER_KEY) {
+    console.log("ADMIN MODE ON");
+    return;
+  }
 
-    let visits = parseInt(localStorage.getItem("visit_count") || "0");
-    visits++;
-    localStorage.setItem("visit_count", visits);
+  const VISITS_KEY = "visits_knt";
+  const BAN_UNTIL_KEY = "ban_until_knt";
 
-    if (visits > MAX_VISITS) {
-        const banTime = BAN_DAYS * 24 * 60 * 60 * 1000;
-        localStorage.setItem("ban_until", now + banTime);
+  const now = Date.now();
+  const banUntil = localStorage.getItem(BAN_UNTIL_KEY);
 
-        // Curățare completă și afișare mesaj
-        document.body.innerHTML = '';
-        document.head.innerHTML = '';
-        document.documentElement.style.margin = '0';
-        document.documentElement.style.height = '100vh';
-        document.documentElement.style.display = 'flex';
-        document.documentElement.style.justifyContent = 'center';
-        document.documentElement.style.alignItems = 'center';
-        document.documentElement.style.background = '#0f0f0f';
-        document.documentElement.style.color = 'red';
-        document.documentElement.style.fontFamily = 'Arial, sans-serif';
-        document.documentElement.innerHTML = '<h1>You are banned</h1>';
-        throw new Error("TEMP BANNED");
-    }
+  // dacă e banat și nu a expirat
+  if (banUntil && now < parseInt(banUntil, 10)) {
+    document.body.innerHTML =
+      "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
+    return;
+  }
+
+  // dacă banul a expirat → reset
+  if (banUntil && now >= parseInt(banUntil, 10)) {
+    localStorage.removeItem(BAN_UNTIL_KEY);
+    localStorage.removeItem(VISITS_KEY);
+  }
+
+  // contorizare accesări
+  let visits = parseInt(localStorage.getItem(VISITS_KEY) || "0", 10);
+  visits++;
+  localStorage.setItem(VISITS_KEY, visits);
+
+  // peste 2 accesări → BAN 10 zile
+  if (visits > 2) {
+    const tenDays = 10 * 24 * 60 * 60 * 1000; // 10 zile
+    localStorage.setItem(BAN_UNTIL_KEY, now + tenDays);
+
+    document.body.innerHTML =
+      "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
+  }
 })();
