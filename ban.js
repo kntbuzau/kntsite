@@ -1,4 +1,4 @@
-(function () {
+(unction () {
   // 🔑 cheia ta secretă (schimb-o cu ceva ce știi doar tu)
   const MASTER_KEY = "admin_knt_2026";
 
@@ -42,3 +42,4 @@
       "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
   }
 })();
+
