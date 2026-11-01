@@ -12,10 +12,25 @@
 
   gtag('config', 'AW-17995968331');
 </script>
-<!-- Event snippet for Persoană de contact (1) conversion page -->
+<!-- Event snippet for Clic pentru apelare (5) conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
-  gtag('event', 'conversion', {'send_to': 'AW-17995968331/rPKvCLrJqIYcEMvekoVD'});
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11464471768/A5n_CJ-hnLAdENjp19oq',
+      'value': 1.0,
+      'currency': 'RON',
+      'event_callback': callback
+  });
+  return false;
+}
 </script>
+
 
 
 <meta charset="UTF-8">
